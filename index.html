@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atmosphere 3D | Weather Dashboard</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
+  <!-- Tom Select -->
+  <link href="https://cdn.jsdelivr.net/npm/tom-select@2.4.3/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <div id="landmark-bg" aria-hidden="true"></div>
+  <div id="weather-overlay" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar glass-nav fixed-top mx-auto mt-3 rounded-4">
+    <div class="container-fluid px-3 px-lg-4">
+
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <span class="brand-icon">
+          <i class="fa-solid fa-earth-americas"></i>
+        </span>
+        <span id="brand-title">Atmosphere 3D</span>
+      </a>
+
+      <div class="d-flex align-items-center gap-2 gap-md-3">
+        <button id="theme-toggle" class="header-pill" type="button">
+          <i id="theme-icon" class="fa-solid fa-moon"></i>
+          <span id="theme-text">Dark</span>
+        </button>
+
+        <label class="header-pill language-pill" for="lang-select">
+          <i class="fa-solid fa-globe"></i>
+          <select id="lang-select" aria-label="Language">
+            <option value="en">English</option>
+            <option value="ar">العربية</option>
+            <option value="fr">Français</option>
+            <option value="es">Español</option>
+            <option value="de">Deutsch</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container page-shell">
+
+    <!-- Hero -->
+    <section class="hero text-center">
+      <div class="eyebrow">
+        <i class="fa-solid fa-cloud-sun"></i>
+        <span id="hero-eyebrow">YOUR WORLD, IN REAL TIME</span>
+      </div>
+
+      <h1 id="hero-title">Explore the world.</h1>
+
+      <p id="hero-description">
+        Discover destinations and live weather conditions through an interactive 3D globe.
+      </p>
+    </section>
+
+    <!-- Country Search -->
+    <section class="search-card glass-panel" aria-label="Destination search">
+
+      <label for="country-select" class="field-label" id="label-select-country">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>Select or Search Destination</span>
+      </label>
+
+      <select id="country-select"
+              autocomplete="off"
+              placeholder="Type a country name...">
+      </select>
+
+      <p class="field-hint" id="field-hint">
+        <i class="fa-solid fa-location-dot"></i>
+        Choose a destination to explore its weather.
+      </p>
+    </section>
+
+    <!-- Realistic 3D Earth -->
+    <section class="globe-section text-center">
+      <div class="section-kicker">
+        <span class="status-dot"></span>
+        <span id="globe-label">INTERACTIVE EARTH</span>
+      </div>
+
+      <div id="globe-container" aria-label="Interactive 3D Earth"></div>
+
+      <p id="globe-status-text" class="globe-status">
+        Choose a destination to begin exploring.
+      </p>
+    </section>
+
+    <!-- Weather Card -->
+    <section id="weather-card"
+             class="weather-card weather-clear d-none"
+             aria-live="polite">
+
+      <div class="weather-card-glow"></div>
+
+      <div class="weather-topline">
+        <div>
+          <div class="weather-kicker" id="current-conditions">
+            CURRENT CONDITIONS
+          </div>
+
+          <h2 id="country-title">Egypt</h2>
+
+          <p class="landmark-line">
+            <i class="fa-solid fa-location-dot"></i>
+            <span id="landmark-tag">Giza Pyramids, Cairo</span>
+          </p>
+        </div>
+
+        <div class="condition-chip">
+          <span id="weather-badge">Clear sky</span>
+        </div>
+      </div>
+
+      <div class="weather-main">
+        <div class="temperature-wrap">
+          <div id="weather-temp" class="temperature">--°C</div>
+
+          <div id="weather-desc" class="weather-description">
+            Clear sky
+          </div>
+
+          <div class="updated-line">
+            <i class="fa-regular fa-clock"></i>
+            <span id="updated-label">Current weather</span>
+          </div>
+        </div>
+
+        <div class="weather-art" aria-hidden="true">
+          <i id="weather-icon" class="fa-solid fa-sun"></i>
+        </div>
+      </div>
+
+      <!-- Weather Metrics -->
+      <div class="metrics-grid">
+
+        <article class="metric-card">
+          <span class="metric-icon humidity-icon">
+            <i class="fa-solid fa-droplet"></i>
+          </span>
+          <span id="lbl-humidity" class="metric-label">Humidity</span>
+          <strong id="weather-humidity">--%</strong>
+        </article>
+
+        <article class="metric-card">
+          <span class="metric-icon wind-icon">
+            <i class="fa-solid fa-wind"></i>
+          </span>
+          <span id="lbl-wind" class="metric-label">Wind speed</span>
+          <strong id="weather-wind">-- km/h</strong>
+        </article>
+
+        <article class="metric-card">
+          <span class="metric-icon pressure-icon">
+            <i class="fa-solid fa-gauge-high"></i>
+          </span>
+          <span id="lbl-pressure" class="metric-label">Pressure</span>
+          <strong id="weather-pressure">-- hPa</strong>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+      <span>Atmosphere 3D · Explore beyond the horizon</span>
+      <span>
+        <i class="fa-solid fa-earth-americas"></i>
+        Earth Explorer
+      </span>
+    </footer>
+
+  </main>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tom-select@2.4.3/dist/js/tom-select.complete.min.js"></script>
+
+  <!-- Main JavaScript -->
+  <script src="./js/style.js"></script>
+</body>
+</html>
