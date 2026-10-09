@@ -90,13 +90,7 @@ const countryData = {
     landmark: "CN Tower, Toronto",
     image: "https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=2400&q=90"
   },
-  AU: {
-    name: "Australia",
-    lat: -25.2744,
-    lon: 133.7751,
-    landmark: "Sydney Opera House",
-    image: "https://images.unsplash.com/photo-1506973035872-a4?auto=format&fit=crop&w=2400&q=90"
-  },
+  
   IN: {
     name: "India",
     lat: 20.5937,
